@@ -1,0 +1,59 @@
+.cursor {
+  position: fixed;
+  top: -20px;
+  left: -20px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(240, 236, 228, 0.2);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  mix-blend-mode: difference;
+  transition: width var(--duration-normal) var(--ease-out-expo),
+              height var(--duration-normal) var(--ease-out-expo),
+              border-color var(--duration-normal) var(--ease-out-expo),
+              background var(--duration-normal) var(--ease-out-expo);
+  will-change: transform;
+}
+
+.dot {
+  position: fixed;
+  top: -3px;
+  left: -3px;
+  width: 6px;
+  height: 6px;
+  background: var(--color-ivory);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10001;
+  mix-blend-mode: difference;
+  will-change: transform;
+}
+
+.link {
+  width: 56px;
+  height: 56px;
+  border-color: rgba(107, 92, 231, 0.4);
+  background: rgba(107, 92, 231, 0.05);
+}
+
+.play {
+  width: 64px;
+  height: 64px;
+  border-color: rgba(240, 236, 228, 0.3);
+  background: rgba(240, 236, 228, 0.05);
+}
+
+.play::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 52%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid var(--color-ivory);
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  opacity: 0.6;
+}
