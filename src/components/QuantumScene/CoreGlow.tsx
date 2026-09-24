@@ -20,7 +20,7 @@ export default function CoreGlow({ progress }: CoreGlowProps) {
     const fadedP = p * Math.max(fadeOut, 0.05);
 
     // Scale pulses gently, grows with progress
-    const baseScale = 0.2 + fadedP * 0.8;
+    const baseScale = 0.15 + fadedP * 0.5;
     const pulse = 1 + Math.sin(t * 1.5) * 0.03 * (0.5 + fadedP * 0.5);
     meshRef.current.scale.setScalar(baseScale * pulse);
 
@@ -65,8 +65,8 @@ export default function CoreGlow({ progress }: CoreGlowProps) {
             vec3 color = mix(colorA, colorB, smoothstep(0.0, 0.5, uProgress));
             color = mix(color, colorC, smoothstep(0.6, 1.0, uProgress) * 0.4);
             
-            float alpha = fresnel * 0.15 * (0.2 + uProgress * 0.8);
-            alpha += 0.02 * uProgress;
+            float alpha = fresnel * 0.07 * (0.2 + uProgress * 0.8);
+            alpha += 0.008 * uProgress;
             
             gl_FragColor = vec4(color, alpha);
           }

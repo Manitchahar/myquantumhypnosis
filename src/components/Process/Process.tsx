@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useSectionProgress } from '../../hooks/useSectionProgress';
 import styles from './Process.module.css';
 
@@ -24,6 +25,7 @@ const STAGES = [
 
 export default function Process() {
   const { ref, progress } = useSectionProgress();
+  const [playing, setPlaying] = useState(false);
   const opacity = Math.min(progress * 3, 1);
   const translateY = (1 - Math.min(progress * 2.5, 1)) * 30;
 
@@ -75,10 +77,45 @@ export default function Process() {
 
         <div className={styles.videoContainer}>
           <div className={styles.videoFrame}>
-            <div className={styles.videoPlaceholder}>
-              <span className={styles.videoLabel}>[ How It Works Video — Placeholder ]</span>
-              <span className={styles.videoSub}>Replace with process explainer video</span>
-            </div>
+            {!playing ? (
+              <div className={styles.videoPlaceholder}>
+                <img
+                  src="https://img.youtube.com/vi/t-wzh4Ta_vo/maxresdefault.jpg"
+                  alt="How Quantum Hypnosis Works"
+                  className={styles.posterImage}
+                />
+                <div className={styles.posterGradient} />
+                <button
+                  className={styles.playButton}
+                  onClick={() => setPlaying(true)}
+                  aria-label="Play process explainer video"
+                >
+                  <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                    <circle cx="32" cy="32" r="31" stroke="currentColor" strokeWidth="1" opacity="0.4" />
+                    <path d="M26 22l16 10-16 10z" fill="currentColor" />
+                  </svg>
+                  <span className={styles.playLabel}>Watch The Process</span>
+                </button>
+              </div>
+            ) : (
+              <div className={styles.iframeContainer}>
+                <iframe
+                  src="https://www.youtube-nocookie.com/embed/t-wzh4Ta_vo?autoplay=1&rel=0"
+                  title="Unlock Your Natural Healing Abilities with QuantumHypnosis"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                  className={styles.iframe}
+                />
+                <button
+                  onClick={() => setPlaying(false)}
+                  className={styles.closeVideo}
+                  aria-label="Close video"
+                >
+                  Close
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>

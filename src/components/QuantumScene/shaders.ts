@@ -127,7 +127,7 @@ export const particleFragmentShader = /* glsl */ `
     color = mix(color, colorC, smoothstep(0.6, 1.0, vPhase) * 0.3);
     
     // Luminous bloom when ordered
-    float glow = smoothstep(0.5, 1.0, vPhase) * 0.3;
+    float glow = smoothstep(0.5, 1.0, vPhase) * 0.12;
     color += glow;
     
     gl_FragColor = vec4(color, alpha * vAlpha);

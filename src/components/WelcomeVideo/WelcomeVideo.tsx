@@ -34,32 +34,44 @@ export default function WelcomeVideo() {
 
         <div className={styles.videoWrapper} ref={containerRef}>
           <div className={styles.videoFrame}>
-            <div className={styles.posterPlaceholder}>
-              <div className={styles.posterGradient} />
-              <span className={styles.posterLabel}>[ Welcome Video — Placeholder ]</span>
-              <span className={styles.posterSub}>
-                Replace with Deyan's introduction video
-              </span>
-            </div>
+            {!playing ? (
+              <>
+                <div className={styles.posterPlaceholder}>
+                  <img
+                    src="https://img.youtube.com/vi/t-wzh4Ta_vo/maxresdefault.jpg"
+                    alt="Unlock Your Natural Healing Abilities with QuantumHypnosis"
+                    className={styles.posterImage}
+                  />
+                  <div className={styles.posterGradient} />
+                </div>
 
-            {!playing && (
-              <button
-                className={styles.playButton}
-                onClick={() => setPlaying(true)}
-                aria-label="Play welcome video"
-              >
-                <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-                  <circle cx="32" cy="32" r="31" stroke="currentColor" strokeWidth="1" opacity="0.4" />
-                  <path d="M26 22l16 10-16 10z" fill="currentColor" />
-                </svg>
-                <span className={styles.playLabel}>Play Introduction</span>
-              </button>
-            )}
-
-            {playing && (
-              <div className={styles.videoPlaceholder}>
-                <p>[ Video player would be embedded here ]</p>
-                <button onClick={() => setPlaying(false)} className={styles.closeVideo}>
+                <button
+                  className={styles.playButton}
+                  onClick={() => setPlaying(true)}
+                  aria-label="Play welcome video"
+                >
+                  <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                    <circle cx="32" cy="32" r="31" stroke="currentColor" strokeWidth="1" opacity="0.4" />
+                    <path d="M26 22l16 10-16 10z" fill="currentColor" />
+                  </svg>
+                  <span className={styles.playLabel}>Play Introduction</span>
+                </button>
+              </>
+            ) : (
+              <div className={styles.iframeContainer}>
+                <iframe
+                  src="https://www.youtube-nocookie.com/embed/t-wzh4Ta_vo?autoplay=1&rel=0"
+                  title="Unlock Your Natural Healing Abilities with QuantumHypnosis"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                  className={styles.iframe}
+                />
+                <button
+                  onClick={() => setPlaying(false)}
+                  className={styles.closeVideo}
+                  aria-label="Close video"
+                >
                   Close
                 </button>
               </div>

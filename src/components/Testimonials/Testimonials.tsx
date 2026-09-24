@@ -3,8 +3,23 @@ import { useSectionProgress } from '../../hooks/useSectionProgress';
 import { useIsMobile } from '../../hooks/useMediaQuery';
 import styles from './Testimonials.module.css';
 
-const TESTIMONIALS = [
-  { id: 1, label: 'Testimonial 01', placeholder: true },
+interface TestimonialItem {
+  id: number;
+  label: string;
+  placeholder?: boolean;
+  videoId?: string;
+  title?: string;
+  thumbnail?: string;
+}
+
+const TESTIMONIALS: TestimonialItem[] = [
+  {
+    id: 1,
+    label: 'Alan Robertson',
+    videoId: 'Puqfd2CCK6Y',
+    title: 'Experience Story — Alan Robertson',
+    thumbnail: 'https://img.youtube.com/vi/Puqfd2CCK6Y/maxresdefault.jpg',
+  },
   { id: 2, label: 'Testimonial 02', placeholder: true },
   { id: 3, label: 'Testimonial 03', placeholder: true },
   { id: 4, label: 'Testimonial 04', placeholder: true },
@@ -16,6 +31,7 @@ export default function Testimonials() {
   const isMobile = useIsMobile();
   const trackRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [playingVideo, setPlayingVideo] = useState<string | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const dragStart = useRef({ x: 0, scrollLeft: 0 });
 
@@ -114,23 +130,73 @@ export default function Testimonials() {
               }}
             >
               <div className={styles.cardInner}>
-                <div className={styles.cardPoster}>
-                  <div className={styles.cardGradient} />
-                  <span className={styles.cardLabel}>[ {t.label} — Placeholder ]</span>
-                  <span className={styles.cardSub}>Replace with testimonial video</span>
-                </div>
-                {i === activeIndex && (
-                  <button className={styles.cardPlay} aria-label={`Play ${t.label}`}>
-                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                      <circle cx="24" cy="24" r="23" stroke="currentColor" strokeWidth="1" opacity="0.5" />
-                      <path d="M20 17l12 7-12 7z" fill="currentColor" />
-                    </svg>
-                  </button>
+                {t.videoId && playingVideo === t.videoId ? (
+                  <div className={styles.cardVideoContainer}>
+                    <iframe
+                      src={`https://www.youtube-nocookie.com/embed/${t.videoId}?autoplay=1&rel=0`}
+                      title={t.title || t.label}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      referrerPolicy="strict-origin-when-cross-origin"
+                      allowFullScreen
+                      className={styles.cardIframe}
+                    />
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setPlayingVideo(null);
+                      }}
+                      className={styles.cardCloseVideo}
+                      aria-label="Close video"
+                    >
+                      Close
+                    </button>
+                  </div>
+                ) : (
+                  <>
+                    <div className={styles.cardPoster}>
+                      {t.thumbnail && (
+                        <img
+                          src={t.thumbnail}
+                          alt={t.label}
+                          className={styles.cardThumbnail}
+                        />
+                      )}
+                      <div className={styles.cardGradient} />
+                      {t.placeholder ? (
+                        <>
+                          <span className={styles.cardLabel}>[ {t.label} — Placeholder ]</span>
+                          <span className={styles.cardSub}>Replace with testimonial video</span>
+                        </>
+                      ) : (
+                        <div className={styles.cardInfo}>
+                          <span className={styles.cardPerson}>{t.label}</span>
+                          <span className={styles.cardSub}>Client Testimonial</span>
+                        </div>
+                      )}
+                    </div>
+                    {i === activeIndex && (
+                      <button
+                        className={styles.cardPlay}
+                        aria-label={`Play ${t.label}`}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          if (t.videoId) {
+                            setPlayingVideo(t.videoId);
+                          }
+                        }}
+                      >
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                          <circle cx="24" cy="24" r="23" stroke="currentColor" strokeWidth="1" opacity="0.5" />
+                          <path d="M20 17l12 7-12 7z" fill="currentColor" />
+                        </svg>
+                      </button>
+                    )}
+                  </>
                 )}
               </div>
               <div className={styles.cardMeta}>
                 <span className={styles.cardNumber}>{String(t.id).padStart(2, '0')}</span>
-                <span className={styles.cardTitle}>Experience Story</span>
+                <span className={styles.cardTitle}>{t.title || 'Experience Story'}</span>
               </div>
             </div>
           ))}
