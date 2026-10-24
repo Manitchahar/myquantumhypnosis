@@ -94,7 +94,7 @@ input, textarea {
 
 /* === Selection === */
 ::selection {
-  background: var(--color-violet-soft);
+  background: var(--color-emerald-soft);
   color: var(--color-ivory);
 }
 
@@ -114,7 +114,7 @@ input, textarea {
 
 /* === Focus === */
 :focus-visible {
-  outline: 1px solid var(--color-violet);
+  outline: 1px solid var(--color-emerald);
   outline-offset: 2px;
   border-radius: 2px;
 }
@@ -182,7 +182,7 @@ input, textarea {
   background: radial-gradient(
     ellipse at 50% 50%,
     transparent 50%,
-    rgba(5, 5, 7, 0.4) 100%
+    rgba(5, 10, 7, 0.4) 100%
   );
 }
 
@@ -210,7 +210,7 @@ input, textarea {
     90deg,
     transparent 0%,
     var(--color-separator) 20%,
-    rgba(107, 92, 231, 0.08) 50%,
+    rgba(61, 139, 95, 0.08) 50%,
     var(--color-separator) 80%,
     transparent 100%
   );

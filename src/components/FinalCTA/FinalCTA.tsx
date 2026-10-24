@@ -15,22 +15,23 @@ export default function FinalCTA() {
     >
       <div className={styles.inner} style={{ opacity, transform: `translateY(${translateY}px)` }}>
         <h2 className={styles.headline}>
-          Sometimes clarity begins<br />with a <em>question.</em>
+          Sometimes clarity begins<br />with a <em>conversation.</em>
         </h2>
         <p className={styles.copy}>
-          Discover whether Quantum Hypnosis is something you would like to explore.
+          A free 15-minute call with Deyan to explore whether Quantum Hypnosis
+          is right for you.
         </p>
         <div className={styles.ctas}>
-          <Button variant="primary" size="lg" href="#lead-capture" showArrow>
-            Begin Your Journey
+          <Button variant="primary" size="lg" href="#book-call" showArrow>
+            Book Your Free Call
           </Button>
-          <Button variant="ghost" size="md" href="#welcome">
+          <Button variant="ghost" size="md" href="#interview">
             <span className={styles.playIcon} aria-hidden="true">
               <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
                 <path d="M4 2.5l10 5.5-10 5.5z" />
               </svg>
             </span>
-            Watch the Introduction
+            Watch the Client Interview
           </Button>
         </div>
       </div>

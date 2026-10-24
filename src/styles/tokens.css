@@ -1,11 +1,11 @@
 :root {
   /* === Colors === */
-  --color-void: #050507;
-  --color-deep: #0a0a10;
-  --color-midnight: #0d0d18;
-  --color-navy: #101024;
-  --color-surface: #141422;
-  --color-muted: #1a1a2e;
+  --color-void: #050a07;
+  --color-deep: #08110c;
+  --color-midnight: #0b1710;
+  --color-navy: #0e1d14;
+  --color-surface: #12241a;
+  --color-muted: #183022;
   
   --color-ivory: #f0ece4;
   --color-warm-white: #e8e2d8;
@@ -13,14 +13,15 @@
   --color-text-muted: #9b9590;
   --color-text-dim: #6a645e;
   
-  --color-indigo: #4a3f8a;
-  --color-violet: #6b5ce7;
-  --color-violet-soft: rgba(107, 92, 231, 0.15);
-  --color-violet-glow: rgba(107, 92, 231, 0.08);
-  --color-champagne: #c9a96e;
-  --color-champagne-soft: rgba(201, 169, 110, 0.2);
+  --color-forest: #1f4d36;
+  --color-emerald: #3d8b5f;
+  --color-emerald-soft: rgba(61, 139, 95, 0.15);
+  --color-emerald-glow: rgba(61, 139, 95, 0.08);
+  --color-champagne: #d4af61;
+  --color-champagne-soft: rgba(212, 175, 97, 0.2);
+  --color-gold-light: #e6c57f;
   
-  --color-glass: rgba(20, 20, 34, 0.6);
+  --color-glass: rgba(14, 29, 20, 0.6);
   --color-glass-border: rgba(255, 255, 255, 0.12);
   --color-separator: rgba(255, 255, 255, 0.1);
   
@@ -82,7 +83,7 @@
   /* === Effects === */
   --blur-glass: 20px;
   --blur-soft: 40px;
-  --shadow-glow: 0 0 60px rgba(107, 92, 231, 0.1);
+  --shadow-glow: 0 0 60px rgba(212, 175, 97, 0.12);
   --shadow-card: 0 4px 30px rgba(0, 0, 0, 0.3);
   --radius-sm: 4px;
   --radius-md: 8px;

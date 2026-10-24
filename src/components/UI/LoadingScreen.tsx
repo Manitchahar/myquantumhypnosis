@@ -20,11 +20,7 @@ export default function LoadingScreen() {
     <div className={`${styles.screen} ${fading ? styles.fading : ''}`} aria-hidden="true">
       <div className={styles.content}>
         <div className={styles.logo}>
-          <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-            <circle cx="20" cy="20" r="12" stroke="#6b5ce7" strokeWidth="0.5" opacity="0.4" />
-            <circle cx="20" cy="20" r="6" stroke="#c9a96e" strokeWidth="0.3" opacity="0.3" />
-            <circle cx="20" cy="20" r="2" fill="#f0ece4" opacity="0.6" />
-          </svg>
+          <img src="/crest-160.webp" alt="" width={88} height={88} />
         </div>
         <div className={styles.bar}>
           <div className={styles.barFill} />

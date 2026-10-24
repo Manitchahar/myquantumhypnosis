@@ -1,32 +1,30 @@
-# React + TypeScript + Vite
+# MyQuantumHypnosis.com
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+One-page lead-generation funnel for Deyan's Quantum Hypnosis practice (Vite + React + TypeScript).
 
-Currently, two official plugins are available:
+## Page structure
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+1. **Welcome**: crest, headline and the welcome video
+2. **Testimonials**: strip of client testimonial videos
+3. **Next steps**: two options
+   - book a free 15-minute introductory call (pick a time, or "raise your hand" with the form)
+   - watch the interview with past client Amandeep Dhillon
 
-## React Compiler
+## Configuration
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Video IDs live in `src/config.ts`. Lead capture and booking are set through environment variables on the host:
 
-## Expanding the Oxlint configuration
+| Variable | Purpose |
+| --- | --- |
+| `VITE_BOOKING_URL` | Scheduling link for the 15-minute call (Calendly, Cal.com, ...). Until it is set, the "Pick a time" button is a placeholder that stays on the page. |
+| `VITE_LEAD_ENDPOINT` | URL that receives the form as a JSON `POST` (Formspree, Zapier/Make webhook, GoHighLevel, ...). **Until this is set, submissions are not delivered anywhere.** |
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+Testimonial videos are listed in `src/components/Testimonials/Testimonials.tsx`.
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+## Development
+
+```bash
+npm install
+npm run dev     # local dev server
+npm run build   # type-check and production build into dist/
 ```
-
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.

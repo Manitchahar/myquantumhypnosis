@@ -4,12 +4,9 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import Navigation from './components/Navigation/Navigation';
-import Hero from './components/Hero/Hero';
 import WelcomeVideo from './components/WelcomeVideo/WelcomeVideo';
 import Testimonials from './components/Testimonials/Testimonials';
-import Process from './components/Process/Process';
-import LeadCapture from './components/LeadCapture/LeadCapture';
-import Masterclass from './components/Masterclass/Masterclass';
+import NextSteps from './components/NextSteps/NextSteps';
 import FinalCTA from './components/FinalCTA/FinalCTA';
 import Footer from './components/Footer/Footer';
 import CustomCursor from './components/UI/CustomCursor';
@@ -77,17 +74,11 @@ export default function App() {
       <CustomCursor />
       <Navigation />
       <main>
-        <Hero />
-        <div className="separator" />
         <WelcomeVideo />
         <div className="separator" />
         <Testimonials />
         <div className="separator" />
-        <Process />
-        <div className="separator" />
-        <LeadCapture />
-        <div className="separator" />
-        <Masterclass />
+        <NextSteps />
         <div className="separator" />
         <FinalCTA />
       </main>

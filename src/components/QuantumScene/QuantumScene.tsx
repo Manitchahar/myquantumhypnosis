@@ -49,8 +49,8 @@ function Scene({ scrollProgress, mousePos, quality, reducedMotion }: SceneProps)
         reducedMotion={reducedMotion}
       />
       <ambientLight intensity={0.15} />
-      <pointLight position={[5, 5, 5]} intensity={0.3} color="#6b5ce7" />
-      <pointLight position={[-3, -2, 3]} intensity={0.2} color="#c9a96e" />
+      <pointLight position={[5, 5, 5]} intensity={0.3} color="#3d8b5f" />
+      <pointLight position={[-3, -2, 3]} intensity={0.2} color="#d4af61" />
 
       <ConsciousnessObject
         progress={scrollProgress}
@@ -66,7 +66,7 @@ function Scene({ scrollProgress, mousePos, quality, reducedMotion }: SceneProps)
         radius={3.0}
         speed={0.08}
         tilt={[0.3, 0, 0.2]}
-        color="#6b5ce7"
+        color="#3d8b5f"
         opacity={0.08}
       />
       <OrbitalRing
@@ -74,7 +74,7 @@ function Scene({ scrollProgress, mousePos, quality, reducedMotion }: SceneProps)
         radius={3.5}
         speed={-0.05}
         tilt={[1.2, 0.5, 0]}
-        color="#4a3f8a"
+        color="#1f4d36"
         opacity={0.06}
       />
       <OrbitalRing
@@ -82,7 +82,7 @@ function Scene({ scrollProgress, mousePos, quality, reducedMotion }: SceneProps)
         radius={2.8}
         speed={0.12}
         tilt={[0.8, 1.0, 0.3]}
-        color="#c9a96e"
+        color="#d4af61"
         opacity={0.04}
       />
 

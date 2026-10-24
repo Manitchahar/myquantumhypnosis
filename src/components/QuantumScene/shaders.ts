@@ -118,17 +118,17 @@ export const particleFragmentShader = /* glsl */ `
     
     if (alpha < 0.01) discard;
     
-    // Color interpolation: indigo → violet → champagne glow
-    vec3 colorA = vec3(0.29, 0.25, 0.54); // indigo
-    vec3 colorB = vec3(0.42, 0.36, 0.91); // violet
-    vec3 colorC = vec3(0.79, 0.66, 0.43); // champagne
+    // Color interpolation: forest → emerald → gold glow
+    vec3 colorA = vec3(0.07, 0.19, 0.13); // forest
+    vec3 colorB = vec3(0.15, 0.36, 0.25); // emerald
+    vec3 colorC = vec3(0.83, 0.69, 0.38); // gold
     
     vec3 color = mix(colorA, colorB, smoothstep(0.0, 0.6, vPhase));
-    color = mix(color, colorC, smoothstep(0.6, 1.0, vPhase) * 0.3);
+    color = mix(color, colorC, smoothstep(0.5, 1.0, vPhase) * 0.5);
     
     // Luminous bloom when ordered
     float glow = smoothstep(0.5, 1.0, vPhase) * 0.12;
-    color += glow;
+    color += glow * vec3(1.0, 0.85, 0.55);
     
     gl_FragColor = vec4(color, alpha * vAlpha);
   }

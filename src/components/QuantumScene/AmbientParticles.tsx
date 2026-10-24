@@ -49,7 +49,7 @@ export default function AmbientParticles({ count = 200, quality }: AmbientPartic
         sizeAttenuation
         transparent
         opacity={0.15}
-        color="#6b5ce7"
+        color="#3d8b5f"
         depthWrite={false}
         blending={THREE.AdditiveBlending}
       />
