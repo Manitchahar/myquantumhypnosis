@@ -1,5 +1,6 @@
 import { useState, useCallback, type FormEvent } from 'react';
 import { useSectionProgress } from '../../hooks/useSectionProgress';
+import YouTubePlayer from '../UI/YouTubePlayer';
 import { BOOKING_URL, INTERVIEW_VIDEO_ID, LEAD_ENDPOINT } from '../../config';
 import styles from './NextSteps.module.css';
 
@@ -39,7 +40,6 @@ export default function NextSteps() {
   const [form, setForm] = useState<FormData>(EMPTY_FORM);
   const [state, setState] = useState<FormState>('idle');
   const [errors, setErrors] = useState<FormErrors>({});
-  const [playing, setPlaying] = useState(false);
 
   const opacity = Math.min(progress * 2.5, 1);
   const translateY = (1 - Math.min(progress * 2, 1)) * 30;
@@ -113,7 +113,15 @@ export default function NextSteps() {
               <>
                 <a
                   href={BOOKING_URL}
-                  {...(BOOKING_URL.startsWith('#') ? {} : { target: '_blank', rel: 'noopener noreferrer' })}
+                  {...(BOOKING_URL.startsWith('#')
+                    ? {
+                        // Placeholder link: send the visitor to the form instead of doing nothing
+                        onClick: (e: React.MouseEvent) => {
+                          e.preventDefault();
+                          document.getElementById('firstName')?.focus();
+                        },
+                      }
+                    : { target: '_blank', rel: 'noopener noreferrer' })}
                   className={styles.primaryCta}
                 >
                   Pick a Time
@@ -256,37 +264,11 @@ export default function NextSteps() {
             </p>
 
             <div className={styles.videoFrame}>
-              {playing ? (
-                <iframe
-                  src={`https://www.youtube-nocookie.com/embed/${INTERVIEW_VIDEO_ID}?autoplay=1&rel=0`}
-                  title="Interview with Amandeep Dhillon"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullScreen
-                  className={styles.iframe}
-                />
-              ) : (
-                <button
-                  className={styles.poster}
-                  onClick={() => setPlaying(true)}
-                  aria-label="Play interview with Amandeep Dhillon"
-                >
-                  <img
-                    src={`https://img.youtube.com/vi/${INTERVIEW_VIDEO_ID}/hqdefault.jpg`}
-                    alt=""
-                    className={styles.posterImage}
-                    loading="lazy"
-                  />
-                  <span className={styles.posterGradient} />
-                  <span className={styles.playIcon}>
-                    <svg width="56" height="56" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-                      <circle cx="24" cy="24" r="23" stroke="currentColor" strokeWidth="1" opacity="0.6" />
-                      <path d="M20 17l12 7-12 7z" fill="currentColor" />
-                    </svg>
-                  </span>
-                  <span className={styles.posterCaption}>Interview · Amandeep Dhillon</span>
-                </button>
-              )}
+              <YouTubePlayer
+                videoId={INTERVIEW_VIDEO_ID}
+                title="Interview with Amandeep Dhillon"
+                caption="Interview · Amandeep Dhillon"
+              />
             </div>
 
             <a href="#book-call" className={styles.textLink}>

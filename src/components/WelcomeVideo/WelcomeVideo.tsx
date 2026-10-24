@@ -1,11 +1,11 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import Button from '../UI/Button';
+import YouTubePlayer from '../UI/YouTubePlayer';
 import { WELCOME_VIDEO_ID } from '../../config';
 import styles from './WelcomeVideo.module.css';
 
 export default function WelcomeVideo() {
-  const [playing, setPlaying] = useState(false);
   const innerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ export default function WelcomeVideo() {
     const targets = Array.from(el.querySelectorAll('[data-intro]'));
     gsap.set(targets, { opacity: 0, y: 30 });
 
-    const tl = gsap.timeline({ delay: 0.3 });
+    const tl = gsap.timeline({ delay: 0.9 });
     tl.to(targets, {
       opacity: 1,
       y: 0,
@@ -56,48 +56,11 @@ export default function WelcomeVideo() {
 
         <div className={styles.videoWrapper} data-intro>
           <div className={styles.videoFrame}>
-            {!playing ? (
-              <>
-                <div className={styles.posterPlaceholder}>
-                  <img
-                    src={`https://img.youtube.com/vi/${WELCOME_VIDEO_ID}/maxresdefault.jpg`}
-                    alt=""
-                    className={styles.posterImage}
-                  />
-                  <div className={styles.posterGradient} />
-                </div>
-
-                <button
-                  className={styles.playButton}
-                  onClick={() => setPlaying(true)}
-                  aria-label="Play welcome video"
-                >
-                  <svg width="72" height="72" viewBox="0 0 64 64" fill="none">
-                    <circle cx="32" cy="32" r="31" stroke="currentColor" strokeWidth="1" opacity="0.5" />
-                    <path d="M26 22l16 10-16 10z" fill="currentColor" />
-                  </svg>
-                  <span className={styles.playLabel}>Watch the Welcome Video</span>
-                </button>
-              </>
-            ) : (
-              <div className={styles.iframeContainer}>
-                <iframe
-                  src={`https://www.youtube-nocookie.com/embed/${WELCOME_VIDEO_ID}?autoplay=1&rel=0`}
-                  title="Welcome to MyQuantumHypnosis.com"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullScreen
-                  className={styles.iframe}
-                />
-                <button
-                  onClick={() => setPlaying(false)}
-                  className={styles.closeVideo}
-                  aria-label="Close video"
-                >
-                  Close
-                </button>
-              </div>
-            )}
+            <YouTubePlayer
+              videoId={WELCOME_VIDEO_ID}
+              title="Welcome to MyQuantumHypnosis.com"
+              caption="Watch the Welcome Video"
+            />
           </div>
         </div>
 

@@ -24,7 +24,7 @@ function CameraRig({ scrollProgress, mousePos, reducedMotion }: Omit<SceneProps,
     if (reducedMotion) return;
 
     const t = scrollProgress;
-    const z = 8 - t * 3.5;
+    const z = 8 - t * 1.5;
     const y = Math.sin(t * Math.PI) * 0.5;
 
     targetPos.current.set(
