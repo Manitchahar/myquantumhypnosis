@@ -9,7 +9,8 @@
   display: flex;
   align-items: center;
   transition: all var(--duration-slow) var(--ease-out-expo);
-  transform: translateY(0);
+  /* no transform/filter at rest: either would trap the fixed mobile menu inside the bar */
+  transform: none;
 }
 
 .nav.hidden {
@@ -144,14 +145,20 @@
 }
 
 @media (max-width: 768px) {
+  .nav.menuOpen {
+    background: var(--color-void);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-bottom: 1px solid var(--color-glass-border);
+  }
+
   .links {
     position: fixed;
     top: var(--nav-height);
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(5, 10, 7, 0.95);
-    backdrop-filter: blur(20px);
+    background: var(--color-void);
     flex-direction: column;
     justify-content: center;
     gap: 2rem;

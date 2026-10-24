@@ -11,9 +11,9 @@ export default function Footer() {
         </div>
 
         <nav className={styles.links} aria-label="Footer navigation">
-          <a href="#" className={styles.link}>Privacy</a>
-          <a href="#" className={styles.link}>Terms</a>
-          <a href="#" className={styles.link}>Contact</a>
+          <a href="#welcome" className={styles.link}>Welcome</a>
+          <a href="#interview" className={styles.link}>Client Interview</a>
+          <a href="#book-call" className={styles.link}>Book a Call</a>
         </nav>
 
         <p className={styles.disclaimer}>

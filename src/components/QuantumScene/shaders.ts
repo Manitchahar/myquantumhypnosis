@@ -92,7 +92,8 @@ export const particleVertexShader = /* glsl */ `
     
     // Alpha: particles fade in, then stay visible
     float fadeIn = smoothstep(0.0, 0.3, uProgress);
-    float orderAlpha = 0.4 + delayedProgress * 0.6;
+    // Converged particles overlap heavily under additive blending, so they thin out as they order
+    float orderAlpha = mix(0.45, 0.12, delayedProgress);
     vAlpha = fadeIn * orderAlpha * uIntensity;
     
     // Color: muted → luminous
@@ -100,7 +101,7 @@ export const particleVertexShader = /* glsl */ `
     
     vec4 mvPosition = modelViewMatrix * vec4(finalPos, 1.0);
     float sizeAttenuation = 300.0 / -mvPosition.z;
-    gl_PointSize = aSize * sizeAttenuation * (0.6 + delayedProgress * 0.4);
+    gl_PointSize = aSize * sizeAttenuation * (0.75 - delayedProgress * 0.2);
     gl_Position = projectionMatrix * mvPosition;
   }
 `;
@@ -124,7 +125,7 @@ export const particleFragmentShader = /* glsl */ `
     vec3 colorC = vec3(0.83, 0.69, 0.38); // gold
     
     vec3 color = mix(colorA, colorB, smoothstep(0.0, 0.6, vPhase));
-    color = mix(color, colorC, smoothstep(0.5, 1.0, vPhase) * 0.5);
+    color = mix(color, colorC, smoothstep(0.6, 1.0, vPhase) * 0.35);
     
     // Luminous bloom when ordered
     float glow = smoothstep(0.5, 1.0, vPhase) * 0.12;

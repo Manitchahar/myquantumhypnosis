@@ -30,6 +30,21 @@ export default function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [handleScroll]);
 
+  // While the mobile menu is open: freeze the page behind it and let Escape close it
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMobileOpen(false);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      window.removeEventListener('keydown', onKey);
+    };
+  }, [mobileOpen]);
+
   const handleNavClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     setMobileOpen(false);
@@ -39,7 +54,7 @@ export default function Navigation() {
 
   return (
     <nav
-      className={`${styles.nav} ${scrolled ? styles.scrolled : ''} ${hidden ? styles.hidden : ''}`}
+      className={`${styles.nav} ${scrolled ? styles.scrolled : ''} ${hidden && !mobileOpen ? styles.hidden : ''} ${mobileOpen ? styles.menuOpen : ''}`}
       role="navigation"
       aria-label="Main navigation"
     >
