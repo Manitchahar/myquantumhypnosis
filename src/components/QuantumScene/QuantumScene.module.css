@@ -20,9 +20,9 @@
     to bottom,
     transparent 0%,
     transparent 30%,
-    rgba(5, 5, 7, 0.4) 55%,
-    rgba(5, 5, 7, 0.85) 75%,
-    rgba(5, 5, 7, 0.95) 90%,
+    rgba(5, 10, 7, 0.4) 55%,
+    rgba(5, 10, 7, 0.85) 75%,
+    rgba(5, 10, 7, 0.95) 90%,
     var(--color-void) 100%
   );
   pointer-events: none;

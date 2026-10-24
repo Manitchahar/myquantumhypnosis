@@ -5,8 +5,9 @@ export default function Footer() {
     <footer className={styles.footer} role="contentinfo">
       <div className={styles.inner}>
         <div className={styles.brand}>
+          <img src="/crest-160.webp" alt="" className={styles.crest} width={96} height={96} loading="lazy" />
           <span className={styles.brandText}>MyQuantumHypnosis.com</span>
-          <span className={styles.brandSub}>Deyan</span>
+          <span className={styles.brandSub}>Deyan · Manifest the Impossible</span>
         </div>
 
         <nav className={styles.links} aria-label="Footer navigation">

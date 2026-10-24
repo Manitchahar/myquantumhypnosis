@@ -164,8 +164,8 @@ export default function Testimonials() {
                       <div className={styles.cardGradient} />
                       {t.placeholder ? (
                         <>
-                          <span className={styles.cardLabel}>[ {t.label} — Placeholder ]</span>
-                          <span className={styles.cardSub}>Replace with testimonial video</span>
+                          <span className={styles.cardLabel}>More stories coming soon</span>
+                          <span className={styles.cardSub}>New client experiences are being recorded</span>
                         </>
                       ) : (
                         <div className={styles.cardInfo}>
@@ -174,15 +174,13 @@ export default function Testimonials() {
                         </div>
                       )}
                     </div>
-                    {i === activeIndex && (
+                    {i === activeIndex && t.videoId && (
                       <button
                         className={styles.cardPlay}
                         aria-label={`Play ${t.label}`}
                         onClick={(e) => {
                           e.stopPropagation();
-                          if (t.videoId) {
-                            setPlayingVideo(t.videoId);
-                          }
+                          setPlayingVideo(t.videoId!);
                         }}
                       >
                         <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
@@ -196,7 +194,7 @@ export default function Testimonials() {
               </div>
               <div className={styles.cardMeta}>
                 <span className={styles.cardNumber}>{String(t.id).padStart(2, '0')}</span>
-                <span className={styles.cardTitle}>{t.title || 'Experience Story'}</span>
+                <span className={styles.cardTitle}>{t.placeholder ? 'Coming soon' : t.title || 'Experience Story'}</span>
               </div>
             </div>
           ))}

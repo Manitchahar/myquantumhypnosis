@@ -58,9 +58,9 @@ export default function CoreGlow({ progress }: CoreGlowProps) {
             vec3 viewDir = normalize(cameraPosition - vPosition);
             float fresnel = pow(1.0 - abs(dot(vNormal, viewDir)), 3.0);
             
-            vec3 colorA = vec3(0.29, 0.25, 0.54);
-            vec3 colorB = vec3(0.42, 0.36, 0.91);
-            vec3 colorC = vec3(0.79, 0.66, 0.43);
+            vec3 colorA = vec3(0.07, 0.19, 0.13);
+            vec3 colorB = vec3(0.15, 0.36, 0.25);
+            vec3 colorC = vec3(0.83, 0.69, 0.38);
             
             vec3 color = mix(colorA, colorB, smoothstep(0.0, 0.5, uProgress));
             color = mix(color, colorC, smoothstep(0.6, 1.0, uProgress) * 0.4);

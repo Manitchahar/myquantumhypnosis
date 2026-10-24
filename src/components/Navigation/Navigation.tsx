@@ -2,10 +2,10 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import styles from './Navigation.module.css';
 
 const NAV_LINKS = [
-  { label: 'Experience', href: '#welcome' },
+  { label: 'Welcome', href: '#welcome' },
   { label: 'Stories', href: '#testimonials' },
-  { label: 'Process', href: '#process' },
-  { label: 'Masterclass', href: '#masterclass' },
+  { label: 'Client Interview', href: '#interview' },
+  { label: 'Book a Call', href: '#book-call' },
 ];
 
 export default function Navigation() {
@@ -44,7 +44,8 @@ export default function Navigation() {
       aria-label="Main navigation"
     >
       <div className={styles.inner}>
-        <a href="#" className={styles.brand} aria-label="MyQuantumHypnosis home">
+        <a href="#welcome" className={styles.brand} aria-label="MyQuantumHypnosis home" onClick={(e) => handleNavClick(e, '#welcome')}>
+          <img src="/crest-160.webp" alt="" className={styles.brandCrest} width={40} height={40} />
           <span className={styles.brandText}>My Quantum Hypnosis</span>
         </a>
 
@@ -62,8 +63,8 @@ export default function Navigation() {
         </div>
 
         <div className={styles.actions}>
-          <a href="#lead-capture" className={styles.cta} onClick={(e) => handleNavClick(e, '#lead-capture')}>
-            Begin Your Journey
+          <a href="#book-call" className={styles.cta} onClick={(e) => handleNavClick(e, '#book-call')}>
+            Free 15-Min Call
           </a>
           <button
             className={styles.burger}

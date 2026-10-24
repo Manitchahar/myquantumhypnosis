@@ -28,7 +28,7 @@
   transition: opacity var(--duration-normal) ease;
   background: radial-gradient(
     200px circle at calc(50% + var(--mx)) calc(50% + var(--my)),
-    var(--color-violet-soft),
+    var(--color-emerald-soft),
     transparent 70%
   );
   pointer-events: none;
@@ -57,14 +57,15 @@
 
 /* Variants */
 .primary {
-  background: var(--color-ivory);
+  background: var(--color-champagne);
   color: var(--color-void);
-  border-color: var(--color-ivory);
+  border-color: var(--color-champagne);
 }
 
 .primary:hover {
-  background: #fff;
-  box-shadow: 0 0 30px rgba(240, 236, 228, 0.15);
+  background: var(--color-gold-light);
+  border-color: var(--color-gold-light);
+  box-shadow: 0 0 30px var(--color-champagne-soft);
 }
 
 .secondary {
