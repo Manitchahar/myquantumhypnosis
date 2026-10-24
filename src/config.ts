@@ -9,8 +9,9 @@ export const WELCOME_VIDEO_ID = 't-wzh4Ta_vo';
 export const INTERVIEW_VIDEO_ID = 'CNhcH4aBBd4';
 
 /** Scheduling page for the free 15-minute introductory call (Calendly, Cal.com, etc.).
- *  Leave empty to hide the "Pick a time" button and offer only the "raise your hand" form. */
-export const BOOKING_URL: string = import.meta.env.VITE_BOOKING_URL ?? '';
+ *  Placeholder for now: the "Pick a time" button stays on the call card until the real link is set.
+ *  Set to an empty string to hide the button and offer only the "raise your hand" form. */
+export const BOOKING_URL: string = import.meta.env.VITE_BOOKING_URL ?? '#book-call';
 
 /** Endpoint that receives "raise your hand" requests as a JSON POST
  *  (Formspree, Zapier/Make webhook, GoHighLevel inbound webhook, ...). */

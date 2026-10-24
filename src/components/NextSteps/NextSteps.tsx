@@ -113,8 +113,7 @@ export default function NextSteps() {
               <>
                 <a
                   href={BOOKING_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  {...(BOOKING_URL.startsWith('#') ? {} : { target: '_blank', rel: 'noopener noreferrer' })}
                   className={styles.primaryCta}
                 >
                   Pick a Time

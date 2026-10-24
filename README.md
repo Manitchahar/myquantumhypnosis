@@ -16,7 +16,7 @@ Video IDs live in `src/config.ts`. Lead capture and booking are set through envi
 
 | Variable | Purpose |
 | --- | --- |
-| `VITE_BOOKING_URL` | Scheduling link for the 15-minute call (Calendly, Cal.com, ...). When unset, only the "raise your hand" form is shown. |
+| `VITE_BOOKING_URL` | Scheduling link for the 15-minute call (Calendly, Cal.com, ...). Until it is set, the "Pick a time" button is a placeholder that stays on the page. |
 | `VITE_LEAD_ENDPOINT` | URL that receives the form as a JSON `POST` (Formspree, Zapier/Make webhook, GoHighLevel, ...). **Until this is set, submissions are not delivered anywhere.** |
 
 Testimonial videos are listed in `src/components/Testimonials/Testimonials.tsx`.
